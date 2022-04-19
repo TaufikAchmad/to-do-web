@@ -60,6 +60,14 @@ const client = createClient({
               }
             );
           },
+          logout: (_result, args, cache, info) => {
+            betterUpdateQuery<LoginMutation, MeQuery>(
+              cache,
+              { query: MeDocument },
+              _result,
+              () => ({ me: null })
+            );
+          },
         },
       },
     }),
